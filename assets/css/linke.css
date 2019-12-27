@@ -153,7 +153,7 @@ ins, a {
     /*height: 6.45rem;*/
     width: 6.33rem;
     margin: 0 auto;
-    background-image: url("../imgs/title1.png");
+    background-image: url("../imgs/lingke/title1.png");
 }
 
 .content {
@@ -248,7 +248,7 @@ ins, a {
     width: 6.45rem;
     /*height: 4.51rem;*/
     margin: 0 auto;
-    background-image: url("../imgs/title2.png");
+    background-image: url("../imgs/lingke/title2.png");
 }
 
 .bg2 .title {
@@ -445,7 +445,7 @@ input[type='text'], input[type='number'] {
     background-repeat: no-repeat;
     background-position: bottom;
     color: #fff;
-    background-image: url("../../assets/imgs/activespan.png");
+    background-image: url("../imgs/lingke/activespan.png");
 }
 
 .form .inputbox {
@@ -496,7 +496,7 @@ input[type='text'], input[type='number'] {
 .arrow {
     background-size: auto 5px;
     background-repeat: no-repeat;
-    background-image: url("../imgs/form_arrow.png");
+    background-image: url("../imgs/lingke/form_arrow.png");
     background-position: 6.1rem center;
 }
 
@@ -606,7 +606,7 @@ input[type='text'], input[type='number'] {
 }
 
 .bottom {
-    background-image: url("../imgs/bottom.png");
+    background-image: url("../imgs/lingke/bottom.png");
     /*padding: 0.2rem 0 0 0;*/
     background-position: top center;
     /*height: 7.64rem;*/
