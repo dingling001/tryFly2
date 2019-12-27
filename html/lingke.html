@@ -410,23 +410,17 @@
             },
             // 抽奖
             showtips() {
-                // console.log(document.getElementById('spin'))
                 var that = this;
-                // run(el, path, n = 1, speed = 60, i = 0, len = path.length, random = Math.floor(Math.random() * len)) {
-                // this.debounce(() => {
                 var rr = [2, 6];
                 var r = this.randomNum(0, 1);
-                // });
-                if (this.canPrize) {
+                // that.start = true;
+                // that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
+                if (that.canPrize) {
                     that.start = true;
                     that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
-                    // that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
-                    // setTimeout(function () {
-                    //     that.show_box = true;
-                    // },1000)
                 } else {
                     that.show_box = true;
-                    this.tips = '此处仅针对通过车集市参与本次活动订车的车主未通过本活动订车的购车主无法参加'
+                    that.tips = '此处仅针对通过车集市参与本次活动订车的车主未通过本活动订车的购车主无法参加'
                 }
             },
             // 关闭窗口
@@ -520,7 +514,9 @@
                         // 如果n为1,则设置中奖数值
                         if (n === 1) {
                             len = random
-                            that.show_box = true;
+                            setTimeout(function () {
+                                that.show_box = true;
+                            },speed*len)
                         }
                         if (len <= i) {
                             i = n === 1 ? len : 0;
