@@ -81,13 +81,13 @@
                     </select>
                 </div>
             </div>
-            <div class="inputbox arrow">
-                <label>车型</label>
-                <select v-model="cartype_val" @change="car_change">
-                    <option :value="item.name" v-for="item in cartType">{{item.name}}</option>
-                </select>
-                <!--<input type="text" id="car"/>-->
-            </div>
+            <!--<div class="inputbox arrow">-->
+                <!--<label>车型</label>-->
+                <!--<select v-model="cartype_val" @change="car_change">-->
+                    <!--<option :value="item.name" v-for="item in cartType">{{item.name}}</option>-->
+                <!--</select>-->
+                <!--&lt;!&ndash;<input type="text" id="car"/>&ndash;&gt;-->
+            <!--</div>-->
             <div class="inputbox"><label>备注</label><input type="text" placeholder="" v-model="remark"/></div>
             <div class="formbtn" @click="orderform">确认提交</div>
         </form>
@@ -116,7 +116,7 @@
     <div class="weui-mask weui-mask--visible" v-if="show_box"></div>
     <div class="weui-dialog weui-dialog--visible" v-if="show_box">
         <div class="weui-dialog__hd"><strong class="weui-dialog__title">{{title}}</strong></div>
-        <div class="weui-dialog__bd" v-if="!canPrize">{{tips}}</div>
+        <div class="weui-dialog__bd" v-if="!canPrize"><span class="img"></span>{{tips}}</div>
         <div class="weui-dialog__bd" v-else>
             请将此兑奖码发送至邮箱
             <div><span class="email">{{email}}</span>进行兑奖查询</div>
@@ -366,9 +366,11 @@
                     this.Toast('请选择省份')
                 } else if (this.cit == '') {
                     this.Toast('请选择城市')
-                } else if (this.cartype_id == '') {
-                    this.Toast('请选择车型')
-                } else {
+                }
+                // else if (this.cartype_id == '') {
+                //     this.Toast('请选择车型')
+                // }
+                else {
                     // TODO
                 }
 
