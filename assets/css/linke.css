@@ -6,6 +6,7 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 html, * {
@@ -119,7 +120,7 @@ ins, a {
 
 #app {
     /*background: linear-gradient(90deg, rgba(80, 0, 195, 1), rgba(124, 0, 195, 1));*/
-    /*background: linear-gradient(0deg, #101832, #050713);*/
+    background: linear-gradient(0deg, #040611, #121A37);
     min-height: 100vh;
     /*padding-bottom: .88rem;*/
     background-color: #040714;
@@ -284,24 +285,75 @@ ins, a {
 }
 
 .box {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+    /*z-index: 10;*/
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    background-color: #F54359;
+    justify-content: space-between;
+    padding: 8px 7px;
     /*background-color: #fff;*/
+    position: relative;
 }
 
 .box .item {
-    width: calc(100% / 3);
-    height: calc(100% / 3);
+    width: 95px;
+    height: 80px;
+    /*width: calc(100% / 3);*/
+    /*height: calc(100% / 3);*/
+    transition: ease-in-out .3s;
     /*border: 1px solid #000;*/
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    background-color: #fff;
+    font-size: 10px;
+    color: #14086C;
+    flex-direction: column;
+    justify-content: space-around;
 }
+
+.box .item img {
+    /*width: 50%;*/
+}
+
+.box .p0 {
+    /*border-bottom: 5px solid #F478BF;*/
+}
+
+.box .p1 {
+    /*border-bottom: 5px solid #FDBA51;*/
+}
+
+.p0 img ,.p4 img{
+    width: 33px;
+}
+
+.p1 img,.p5 img  {
+    width: 54px;
+}
+
+.p2 img ,.p6 img{
+    width: 33px;
+}
+
+.p3 img ,.p7 img{
+    width: 78px;
+}
+
+.p3 img {
+    width: 78px;
+}
+
+
+
 .box .spin {
+    transform: scale(1.1);
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -319,6 +371,7 @@ ins, a {
     /*background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
     /*background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
 }
+
 .game:before {
     content: "";
     position: absolute;
@@ -326,13 +379,13 @@ ins, a {
     height: 100%;
     top: 0;
     left: -300px;
-    overflow: hidden;
-    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, .2)), color-stop(100%, rgba(255, 255, 255, 0)));
-    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);
-    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);
-    -webkit-transform: skewX(-25deg);
-    -moz-transform: skewX(-25deg)
+    /*overflow: hidden;*/
+    /*background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+    /*background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, .2)), color-stop(100%, rgba(255, 255, 255, 0)));*/
+    /*background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+    /*background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, 0) 100%);*/
+    /*-webkit-transform: skewX(-25deg);*/
+    /*-moz-transform: skewX(-25deg)*/
 }
 
 .game:hover:before {
@@ -373,8 +426,8 @@ ins, a {
 }
 
 .game img {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
 }
 
 .gamebtn {
@@ -796,7 +849,7 @@ input[type='text'], input[type='number'] {
     color: #8E97A4;
     font-size: 16px;
     display: flex;
-    /*align-items: center;*/
+    align-items: center;
     justify-content: center;
     /*background-image: url("../imgs/lingke/maomi.jpeg");*/
 
@@ -977,6 +1030,16 @@ input[type='text'], input[type='number'] {
 
     }
 }
-.weui-dialog__hd{
+
+.weui-dialog__hd {
     padding: 0;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -1px -1px;
+    }
+    100% {
+        background-position: -12px -12px;
+    }
 }

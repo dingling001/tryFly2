@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>车集市 · 双11购车节（领克专场）</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+    <link rel="stylesheet" href="../assets/css/thiscss.css">
     <link rel="stylesheet" href="../assets/css/linke.css">
     <script src="../assets/js/window.js"></script>
 
@@ -42,19 +43,43 @@
                 <div class="active_content1">即日起参与抽奖，有机会赢取购车礼包，万元购车礼金、全新iPhone Pro拿不停，快来试试手气吧</div>
             </div>
             <div class="game">
-                <img src="../assets/imgs/lingke/tigger.png" alt="">
+                <!--<img src="../assets/imgs/lingke/tigger.png" alt="">-->
                 <!--<div class="gamebtn"></div>-->
-                <div class="box">
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item start" @click="showtips"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="spin" id="spin" v-show="start"></div>
+                <!--<div class="box">-->
+                <!--<div class="item p0"><img src="../assets/imgs/lingke/p0.png" alt=""><span>iphone</span></div>-->
+                <!--<div class="item p1"><img src="../assets/imgs/lingke/p1.png" alt=""><span>加油卡</span></div>-->
+                <!--<div class="item p2"></div>-->
+                <!--<div class="item p3"></div>-->
+                <!--<div class="item start" @click="showtips"></div>-->
+                <!--<div class="item p5"></div>-->
+                <!--<div class="item p6"></div>-->
+                <!--<div class="item p7"></div>-->
+                <!--<div class="item p8"></div>-->
+                <!--<div class="spin" id="spin" v-show="start">-->
+                <!--<img src="" alt="">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="circle" v-for="(item,index) in circleList"-->
+                <!--:style="{'top':item.topCircle+'px','left':item.leftCircle+'px','background-color':index%2==0?colorCircleFirst:colorCircleSecond}">-->
+                <!--</div>-->
+                <div class="container-out">
+                    <div class="container-in">
+                        <div :class="'content-out p'+index" v-for="(box,index) in list"
+                             :style="{left:box.left+'px',top:box.top+'px','background-color':index==indexSelect?colorAwardSelect:colorAwardDefault}">
+                            <img class="pond-name-img " :src="box.image_url" alt="">
+                            <div class="pond-name" :class="{colorfff:index==indexSelect}">{{box.name}}</div>
+                        </div>
+                    </div>
+                    <div class="start-btn" v-on:click="showtips">
+                        <span>立即</span>
+                        <span>抽奖</span>
+                        <!--<img src="image/pond-button.png" style="height:80px;width:100%;" alt="">-->
+                        <!--<img src="image/pond-cj.png" :style="{'top':btntop+'px'}"-->
+                        <!--style="position:absolute;left:5px;height:68px;width:89px;top:0;" alt="">-->
+                    </div>
+                    <div class="circle" v-for="(item,index) in circleList"
+                         :style="{'top':item.topCircle+'px','left':item.leftCircle+'px','background-color':index%2==0?colorCircleFirst:colorCircleSecond}">
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,11 +107,11 @@
                 </div>
             </div>
             <!--<div class="inputbox arrow">-->
-                <!--<label>车型</label>-->
-                <!--<select v-model="cartype_val" @change="car_change">-->
-                    <!--<option :value="item.name" v-for="item in cartType">{{item.name}}</option>-->
-                <!--</select>-->
-                <!--&lt;!&ndash;<input type="text" id="car"/>&ndash;&gt;-->
+            <!--<label>车型</label>-->
+            <!--<select v-model="cartype_val" @change="car_change">-->
+            <!--<option :value="item.name" v-for="item in cartType">{{item.name}}</option>-->
+            <!--</select>-->
+            <!--&lt;!&ndash;<input type="text" id="car"/>&ndash;&gt;-->
             <!--</div>-->
             <div class="inputbox"><label>备注</label><input type="text" placeholder="" v-model="remark"/></div>
             <div class="formbtn" @click="orderform">确认提交</div>
@@ -270,7 +295,30 @@
             loadShow: false,
             mask: false,
             text: '加载中...',
-            start: false
+            start: false,
+
+            list: [
+                {id: 1, type: 1, name: 'iphone', image_url: '../assets/imgs/lingke/p0.png'},
+                {id: 2, type: 1, name: '加油卡', image_url: '../assets/imgs/lingke/p1.png'},
+                {id: 3, type: 2, name: '谢谢参与', image_url: '../assets/imgs/lingke/p2.png'},
+                {id: 4, type: 1, name: '现金券', image_url: '../assets/imgs/lingke/p3.png'},
+                {id: 5, type: 1, name: 'iphone', image_url: '../assets/imgs/lingke/p0.png'},
+                {id: 6, type: 1, name: '加油卡', image_url: '../assets/imgs/lingke/p1.png'},
+                {id: 7, type: 1, name: '谢谢参与', image_url: '../assets/imgs/lingke/p2.png'},
+                {id: 8, type: 2, name: '现金券', image_url: '../assets/imgs/lingke/p7.png'},
+            ],
+            circleList: [],
+            colorCircleFirst: "#F12416",
+            colorCircleSecond: "#FFFFFF",
+            colorAwardDefault: "#FFFFFF",
+            colorAwardSelect: "#ffe400",
+            btntop: 0,//按钮的样式
+            time: '',//定时器
+            indexSelect: 0,//奖品下标
+            lottert: 0,//中奖下标
+            prize: 0,//是否中奖
+            prize_name: '',//奖品名字
+            men: false
         },
         created() {
             this.$nextTick(() => {
@@ -309,6 +357,7 @@
                 this.canPrize = canPrize;
                 this.email = email;
                 this.title = title;
+                this.init();
             });
         },
 
@@ -413,13 +462,17 @@
             // 抽奖
             showtips() {
                 var that = this;
-                var rr = [2, 6];
-                var r = this.randomNum(0, 1);
+
                 // that.start = true;
-                // that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
+                // that.debounce(
+                //     that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
+                // )
+                // that.startBtn()
+
                 if (that.canPrize) {
-                    that.start = true;
-                    that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
+                    that.startBtn()
+                    // that.start = true;
+                    // that.run(document.getElementById('spin'), that.generateCirclePath(3, 109.83), 3, 60, 0, that.generateCirclePath(3, 109.83).length, rr[r])
                 } else {
                     that.show_box = true;
                     that.tips = '此处仅针对通过车集市参与本次活动订车的车主未通过本活动订车的购车主无法参加'
@@ -475,63 +528,131 @@
                 this.mask = false;
                 this.loadShow = false;
             },
-            // 新增
 
-            /**
-             * 生成n维环形坐标
-             * @param {number} n 维度
-             * @param {number} cell 单位坐标长度
-             */
-            generateCirclePath(n, cell) {
-                let arr = []
-                for (let i = 0; i < n; i++) {
-                    arr.push([i * cell, 0])
-                }
-                for (let i = 0; i < n - 1; i++) {
-                    arr.push([(n - 1) * cell, (i + 1) * cell])
-                }
-                for (let i = 0; i < n - 1; i++) {
-                    arr.push([(n - i - 2) * cell, (n - 1) * cell])
-                }
-                for (let i = 0; i < n - 2; i++) {
-                    arr.push([0, (n - i - 2) * cell])
-                }
-                console.log(arr)
-                return arr
-            },
-            /**
-             * 环形随机轨道运动函数
-             * @param {element} el 运动的dom元素
-             * @param {array} path 运动的环形坐标集合
-             * @param {number} speed 运动的初始速度
-             * @param {number} i 运动的初始位置
-             * @param {number} len 路径的长度
-             * @param {number} random 中奖坐标
-             */
-            // min + Math.floor(Math.random() * (max - min + 1));
-            run(el, path, n = 1, speed = 60, i = 0, len = path.length, random = Math.floor(Math.random() * len)) {
-                var that = this;
-                setTimeout(() => {
-                    if (n > 0) {
-                        // 如果n为1,则设置中奖数值
-                        if (n === 1) {
-                            len = random
-                            setTimeout(function () {
-                                that.show_box = true;
-                            },speed*len)
-                        }
-                        if (len <= i) {
-                            i = n === 1 ? len : 0;
-                            n--;
-                            speed += (300 - speed) / n
-                        }
-                        el.style.transform = `translate(${path[i][0]}px, ${path[i][1]}px)`
-                        this.run(el, path, n, speed, ++i, len, random)
+            init: function () {
+                var ts = this;
+                var list = this.list;
+                var left = 9;
+                var top = 9;
+
+                for (var i = 0; i < 8; i++) {
+                    if (i == 0) {
+                        left = 9;
+                        top = 9;
+                    } else if (i < 3 && i != 0) {
+                        top = top;
+                        left = left + 98 + 4;
+                    } else if (i >= 3 && i < 5) {
+                        left = left;
+                        top = top + 79 + 4;
+                    } else if (i >= 5 && i < 7) {
+                        left = left - 98 - 4;
+                        top = top;
+                    } else if (i >= 7 && i < 8) {
+                        left = left;
+                        top = top - 79 - 4;
                     }
-                }, speed)
+                    list[i].top = top;
+                    list[i].left = left;
+                }
+                this.list = list;
+                var cleft = 4;//e
+                var ctop = 4;//a
+                var dian = [];
+                for (var j = 0; j < 24; j++) {
+                    if (j == 0) {
+                        cleft = 4;
+                        ctop = 4;
+                    } else if (j < 6) {
+                        ctop = 2;
+                        cleft += 55;
+                    } else if (j == 6) {
+                        ctop = 2;
+                        cleft = 330;
+                    } else if (j < 12) {
+                        ctop += 46;
+                        cleft = 331.5;
+                    } else if (j == 12) {
+                        ctop = 272.5;
+                        cleft = 330;
+                    } else if (j < 18) {
+                        ctop = 275;
+                        cleft -= 55;
+                    } else if (j == 18) {
+                        ctop = 273;
+                        cleft = 5;
+                    } else {
+                        if (!(j < 24)) return;
+                        ctop -= 46, cleft = 2.5;
+                    }
+                    dian.push({
+                        topCircle: ctop,
+                        leftCircle: cleft
+                    })
+                }
+
+                this.circleList = dian;
+                setInterval(function () {
+                    if (ts.colorCircleFirst == "#FFFFFF") {
+                        ts.colorCircleFirst = "#F12416";
+                        ts.colorCircleSecond = "#FFFFFF";
+                    } else {
+                        ts.colorCircleFirst = "#FFFFFF";
+                        ts.colorCircleSecond = "#F12416";
+                        ts.btntop = 0;
+                    }
+                }, 900)
+                this.time = setInterval(function () {
+                    if (ts.btntop == 0) {
+                        ts.btntop = -3;
+                    } else {
+                        ts.btntop = 0;
+                    }
+                }, 900)
+            },
+            startBtn: function (e) {
+                clearInterval(this.time);
+                this.men = true;
+                this.btntop = 0;
+                this.lottert = 0;
+                var ts = this;
+                var i = this.indexSelect;
+                var list = this.list;
+                var time = null;
+                var s = 0;
+
+                time = setInterval(function () {
+                    i++;
+                    i %= 8;
+                    s += 30;
+                    ts.indexSelect = i;
+                    if (ts.lottert > 0 && i + 1 == ts.lottert) {
+                        clearInterval(time);
+                        ts.time = setInterval(function () {
+                            if (ts.btntop == 0) {
+                                ts.btntop = -3;
+                            } else {
+                                ts.btntop = 0;
+                            }
+                        }, 900);
+                        if (list[i].type == 2) {
+                            ts.prize = 2;
+                        } else {
+                            ts.prize_name = list[i].name;
+                            ts.prize = 1;
+                        }
+
+                    }
+                }, 200 + s);
+                var rr = [3, 7];
+                var r = ts.randomNums(0, 1);
+                console.log(rr[r])
+                setTimeout(function () {
+                    ts.lottert = rr[r];
+                }, 2e3);
             },
             // 随机数
-            randomNum(minNum, maxNum, decimalNum) {
+            randomNums(minNum, maxNum, decimalNum) {
                 var x = 0;
                 var max = 0, min = 0;
                 minNum <= maxNum ? (min = minNum, max = maxNum) : (min = maxNum, max = minNum);
@@ -550,29 +671,6 @@
                         break;
                 }
                 return x
-            },
-            // 防抖函数,避免频繁点击执行多次函数
-            debounce(fn, t = 300, immediate = true) {
-                if (typeof fn !== 'function') throw new Error('第一个参数必须是方法')
-                let _fn = fn;
-                let timer;
-                return function () {
-                    if (timer) clearTimeout(timer);
-                    if (immediate) {
-                        // 如果已经执行过，不再执行
-                        var callNow = !timer;
-                        timer = setTimeout(() => {
-                            timer = null;
-                        }, t)
-                        if (callNow) {
-                            _fn.apply(this, arguments)
-                        }
-                    } else {
-                        timer = setTimeout(() => {
-                            _fn.apply(this, arguments)
-                        }, t);
-                    }
-                }
             }
         }
     })
